@@ -1,2 +1,4 @@
-package com.location.iceCream.model;public class Seller {
+package com.location.iceCream.model;
+
+public class Seller {
 }
