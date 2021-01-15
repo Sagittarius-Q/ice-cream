@@ -1,5 +1,7 @@
 package com.location.iceCream.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 
@@ -9,14 +11,18 @@ import java.util.List;
 @Entity
 public class IceCream {
     @Id
+    @SequenceGenerator(name = "ice", allocationSize = 1)
+    @GeneratedValue(generator = "ice", strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
-    @ManyToOne
-    @JoinColumn(name = "seller_iceCream")
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "seller_id")
     private Seller owner;
     private String description;
+
     @OneToMany
-    @JoinColumn(name = "ice_image")
+    @JoinColumn
     private List<ImageModel> image;
     private int rate;
     @OneToMany

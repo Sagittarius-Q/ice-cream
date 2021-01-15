@@ -1,9 +1,11 @@
 package com.location.iceCream.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.location.iceCream.config.Role;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -21,13 +23,15 @@ public class Seller {
     @NotEmpty(message = "Please enter your password..!")
     @Size(min = 4,max = 20,message = "Your password must between 4 and 20 characters ")
     private String password;
+    @AssertTrue
+    private boolean active;
     @NotEmpty
     private String username;
     @Enumerated(EnumType.STRING)
     private Role role;
     private String address;
-    @OneToMany
-    @JoinColumn(name = "seller_iceCream")
+    @JsonManagedReference
+    @OneToMany(fetch = FetchType.LAZY)
     private List<IceCream> iceCreamList;
 
 }
