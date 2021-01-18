@@ -21,7 +21,6 @@ public class HomeController {
     @GetMapping
     public String getHomePage(Model model){
         model.addAttribute("list", iceCreamService.getAll());
-        System.out.println("enter");
         return "home";
     }
 
