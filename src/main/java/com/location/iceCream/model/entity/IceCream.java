@@ -1,7 +1,6 @@
-package com.location.iceCream.model;
+package com.location.iceCream.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 
@@ -19,6 +18,7 @@ public class IceCream {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "seller_id")
     private Seller owner;
+    private float price;
     private String description;
 
     @OneToMany
@@ -26,7 +26,7 @@ public class IceCream {
     private List<ImageModel> image;
     private int rate;
     @OneToMany
-    @JoinColumn(name ="ice_comment")
+    @JoinColumn
     private List<Comment> comments;
 
 }

@@ -1,4 +1,4 @@
-package com.location.iceCream.model;
+package com.location.iceCream.model.entity;
 
 import lombok.Data;
 

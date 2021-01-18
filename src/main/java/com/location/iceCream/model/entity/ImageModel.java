@@ -1,11 +1,11 @@
-package com.location.iceCream.model;
+package com.location.iceCream.model.entity;
 
+import com.location.iceCream.model.entity.IceCream;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.io.IOException;
-import java.util.Base64;
 
 @Data
 @Entity
