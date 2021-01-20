@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 @Controller
 @RequiredArgsConstructor
@@ -24,11 +26,13 @@ public class UserController {
     private final PasswordEncoder passwordEncoder;
 
     @GetMapping
-    public String getFormReg(@ModelAttribute(name = "model") SellerServiceModel seller){
+    public String getFormReg(Model model){
+        model.addAttribute("userForm", new SellerServiceModel());
         return "regForm";
     }
-    @PostMapping
-    public String confirmReg(@ModelAttribute SellerServiceModel seller, BindingResult result, HttpServletRequest req){
+    @PostMapping("/sign")
+    public String confirmReg(@Valid @ModelAttribute("userForm") SellerServiceModel seller,
+                             BindingResult result, HttpServletRequest req){
         if(result.hasErrors()){
             return "regForm";
         }

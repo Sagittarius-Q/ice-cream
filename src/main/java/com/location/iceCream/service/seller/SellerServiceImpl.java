@@ -6,6 +6,7 @@ import com.location.iceCream.model.dto.SellerServiceModel;
 import com.location.iceCream.model.entity.Seller;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,12 +16,14 @@ import java.util.List;
 public class SellerServiceImpl implements SellerService{
     private final SellerRepository sellerRepository;
     private final ModelMapper modelMapper;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public void save(SellerServiceModel sellerServiceModel) {
         sellerServiceModel.setRole(Role.USER);
         sellerServiceModel.setActive(true);
         Seller seller = modelMapper.map(sellerServiceModel,Seller.class);
+        seller.setPassword(passwordEncoder.encode(sellerServiceModel.getPassword()));
         sellerRepository.save(seller);
     }
     @Override

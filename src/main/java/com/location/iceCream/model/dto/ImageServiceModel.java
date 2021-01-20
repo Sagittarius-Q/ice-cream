@@ -1,16 +1,16 @@
 package com.location.iceCream.model.dto;
 
-import com.location.iceCream.model.entity.IceCream;
+
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import java.io.IOException;
+import javax.validation.constraints.NotEmpty;
+
 @Data
 public class ImageServiceModel {
     private Long id;
     private String name;
+    @NotEmpty
     private MultipartFile image;
-    private IceCream iceCream;
+    private IceCreamServiceModel iceCream;
 }
