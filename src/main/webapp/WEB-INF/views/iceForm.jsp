@@ -7,11 +7,12 @@
 </head>
 <body>
 
-<form class="name-form" method="post" action="/ice/add" enctype="multipart/form-data">
-    Name:<input class="name-form" type="text" name="name" placeholder="Title of description" /><br>
-    Descrption:<input class="description-form" type="text" name="description" placeholder="Description"/><br>
-   Photos: <input type="file" name="photo">
+<%--@elvariable id="iceForm" type="com.location.iceCream.model.binding.BindingIceCreamDto"--%>
+<form:form class="name-form" method="post" action="/ice/add" enctype="multipart/form-data" modelAttribute="iceForm">
+    Name:<form:input class="name-form" type="text" name="name" placeholder="Title of description"  path="name"/><br>
+    Description:<form:input class="description-form" type="text" name="description" placeholder="Description" path="description"/><br>
+   Photos: <form:input type="file" name="photo" path="image"/>
     <input class="submit-form" type="submit" />
-</form>
+</form:form>
 </body>
 </html>

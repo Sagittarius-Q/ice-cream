@@ -11,7 +11,7 @@ public class IceCreamServiceModel {
     private SellerServiceModel owner;
     private float price;
     private String description;
-    private List<ImageServiceModel> image;
+    private byte[] image;
     private int rate;
     private List<CommentServiceModel> comments;
 }

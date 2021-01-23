@@ -22,14 +22,14 @@ public class SellerServiceImpl implements SellerService{
     public void save(SellerServiceModel sellerServiceModel) {
         sellerServiceModel.setRole(Role.USER);
         sellerServiceModel.setActive(true);
-        Seller seller = modelMapper.map(sellerServiceModel,Seller.class);
-        seller.setPassword(passwordEncoder.encode(sellerServiceModel.getPassword()));
-        sellerRepository.save(seller);
+        Seller seller = this.modelMapper.map(sellerServiceModel,Seller.class);
+        seller.setPassword(this.passwordEncoder.encode(sellerServiceModel.getPassword()));
+        this.sellerRepository.save(seller);
     }
     @Override
     public SellerServiceModel findByUserName(String userName) {
-        Seller seller = sellerRepository.findByUsername(userName);
-        return modelMapper.map(seller,SellerServiceModel.class);
+        Seller seller = this.sellerRepository.findByUsername(userName);
+        return this.modelMapper.map(seller,SellerServiceModel.class);
     }
     @Override
     public List<SellerServiceModel> findAll() {

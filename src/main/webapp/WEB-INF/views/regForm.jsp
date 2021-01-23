@@ -18,7 +18,8 @@
         <div class="signup-content">
             <div class="signup-form">
                 <h2 class="form-title">Sign up</h2>
-                <form:form method="POST" class="register-form" id="register-form" action="/signup" modelAttribute="userForm">
+                <%--@elvariable id="userForm" type="com.location.iceCream.model.binding.BindingUserDto"--%>
+                <form:form method="POST" class="register-form" id="register-form" action="/user/sign" modelAttribute="userForm">
                     <div class="form-group">
                         <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                         <form:input type="text" name="name" id="name" placeholder="Your Name" path="username"/>
@@ -36,7 +37,7 @@
                     </div>
                     <div class="form-group">
                         <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                        <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password" />
+                        <form:input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"  path="confirmPassword"/>
                     </div>
                     <div class="form-group">
                         <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />

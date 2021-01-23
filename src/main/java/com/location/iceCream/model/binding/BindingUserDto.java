@@ -13,6 +13,8 @@ public class BindingUserDto {
             = "Password must be between 4 and 10 characters")
     private String password;
     private String confirmPassword;
+    @Size(min = 2, max = 20, message =
+            "Username must be between 2 and 20 characters")
     private String username;
     private String address;
 }

@@ -22,9 +22,8 @@ public class IceCreamServiceImpl implements IceCreamService{
 
 
     @Override
-    public void save(IceCreamServiceModel iceCream) {
-        ModelMapper modelMapper = new ModelMapper();
-        IceCream ice = modelMapper.map(iceCream, IceCream.class);
+    public void save(IceCreamServiceModel iceCream){
+        IceCream ice = this.modelMapper.map(iceCream, IceCream.class);
         iceCreamRepository.save(ice);
     }
 

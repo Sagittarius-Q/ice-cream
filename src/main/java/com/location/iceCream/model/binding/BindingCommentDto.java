@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 
 @Data
 public class BindingCommentDto {
-    private String iceCream;
+    private String iceCreamName;
     @Size(min = 10, max = 200, message
             = "Comment must be between 10 and 200 characters")
     private String text;

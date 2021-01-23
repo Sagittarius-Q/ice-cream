@@ -1,5 +1,6 @@
 package com.location.iceCream.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -12,8 +13,9 @@ public class Comment {
     @SequenceGenerator(name = "com", allocationSize = 1)
     @GeneratedValue(generator = "com", strategy = GenerationType.SEQUENCE)
     private Long id;
+    @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "ice_comment")
+    @JoinColumn
     private IceCream iceCream;
     private String text;
     private Date date;
